@@ -33,7 +33,7 @@
       <!-- Navigation -->
       <nav aria-label="main">
         <ul class="nav-list">
-          <li><a href="#games">Games</a></li>
+          <li><a href="Games.html">Games</a></li>
           <li><a href="#software">Software</a></li>
           <li><a href="#links">Links</a></li>
           <li><a href="https://www.youtube.com/@SLWADDAYT">Channel</a></li>
@@ -144,6 +144,22 @@ function animate() {
 }
 animate();
 </script>
+<script>
+document.addEventListener('keydown', function(e) {
+    // Ctrl+C / Ctrl+S / Ctrl+U / Ctrl+Shift+I
+    if (e.ctrlKey && ['c','s','u','i'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        alert("This action is disabled!");
+    }
+});
+</script>
+<script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();  // prevent right-click menu
+    // no alert, silent block
+});
+</script>
+
 
 
 </body>

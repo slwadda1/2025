@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8">
+  <title>Games</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" href="SLWADDA.png" type="image/png">
+</head>
+
+<body>
+
+  <!-- Particles Canvas -->
+  <canvas id="particles"></canvas>
+
+  <header class="site-header">
+    <div class="header-inner">
+
+      <div class="brand">
+        <div class="logo">
+          <img src="SLWADDA.png" alt="Logo">
+        </div>
+        <div class="site-name">
+          <div class="title">SL WADDA WEB</div>
+          <div class="tag">Games</div>
+        </div>
+      </div>
+
+      <nav aria-label="main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Games.html">Games</a></li>
+          <li><a href="#videos">My Video</a></li>
+          <li><a href="https://www.youtube.com/@YourChannelName">Channel</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1 class="games-heading">Games Section</h1>
+
+  </main>
+
+<!-- ---------------- PARTICLES SCRIPT ---------------- -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.onresize = resize;
+
+const DOTS = window.innerWidth < 720 ? 30 : 80;
+const SPEED = 0.4;
+const LINK_DISTANCE = window.innerWidth < 720 ? 80 : 130;
+
+const particles = [];
+
+for (let i = 0; i < DOTS; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    dx: (Math.random() - 0.5) * SPEED,
+    dy: (Math.random() - 0.5) * SPEED,
+    r: Math.random() * 2 + 1
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0, 200, 255, 0.9)";
+    ctx.shadowColor = "rgba(0, 200, 255, 1)";
+    ctx.shadowBlur = window.innerWidth < 720 ? 5 : 10;
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      let a = particles[i];
+      let b = particles[j];
+      let dist = Math.hypot(a.x - b.x, a.y - b.y);
+
+      if (dist < LINK_DISTANCE) {
+        ctx.strokeStyle = "rgba(0, 200, 255," + (1 - dist / LINK_DISTANCE) + ")";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+<script>
+/* Silent Right-Click Disable */
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+/* Text selection Disable */
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
+
+/* Keyboard Shortcuts Block (Ctrl+C, Ctrl+S, Ctrl+U, Ctrl+Shift+I) */
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && ['c','s','u','i'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+    }
+});
+</script>
+<!-- පළමු games-gallery පේලිය -->
+<div class="games-gallery">
+  <div class="game-card">
+    <a href="https://example.com/game1">
+      <img src="3ed3ffac48f42292db4a5c44b43a72be.jpg_720x720q80.jpg_.png" alt="Game 1">
+      <div class="game-name">GTA 5</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game2">
+      <img src="ACOrigins_STD_Store_Portrait_1200x1600_1200x1600-4a79f9f393f7a3a9e5be3a0ae581f3d5.jpg" alt="Game 2">
+      <div class="game-name">Assassin's Creed Origins</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game3">
+      <img src="Call_of_Duty_Modern_Warfare_II_Key_Art.jpg" alt="Game 3">
+      <div class="game-name">Call_of_Duty_Modern_Warfare_II</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game4">
+      <img src="Far_cry_6_cover.jpg" alt="Game 4">
+      <div class="game-name">FAR CRY 6</div>
+    </a>
+  </div>
+</div>
+
+<!-- දෙවන games-gallery පේලිය (වමට aligned) -->
+<div class="games-gallery left-align">
+  <div class="game-card">
+    <a href="https://example.com/game5">
+      <img src="images.jpg" alt="Game 5">
+      <div class="game-name">Sea of Thieves</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game6">
+      <img src="Silent_Hill_2_remake_cover.jpg" alt="Game 6">
+      <div class="game-name">Silent Hill 2</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game7">
+      <img src="silent-hill-f-1q1eg.jpg" alt="Game 7">
+      <div class="game-name">Silent Hill f</div>
+    </a>
+  </div>
+  <div class="game-card">
+    <a href="https://example.com/game8">
+      <img src="bf705e4e15aaf8695aa23a5e8c03713b.jpg" alt="Game 8">
+      <div class="game-name">Euro Truck Simulator 2</div>
+    </a>
+  </div>
+</div>
+
+
+</body>
+</html>
