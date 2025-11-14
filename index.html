@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Particles Canvas -->
+  <canvas id="particles"></canvas>
+
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Logo + name -->
+      <div class="brand">
+        <div class="logo">
+          <img src="SLWADDA.png" alt="Logo">
+        </div>
+        <div class="site-name">
+          <div class="title">SL WADDA WEB</div>
+          <div class="tag">YT</div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav aria-label="main">
+        <ul class="nav-list">
+          <li><a href="#games">Games</a></li>
+          <li><a href="#software">Software</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#channel">Channel</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+ <main>
+
+  <!-- My Video Section -->
+<section id="my-videos" class="video-section">
+  <h2>Tech,Gaming</h2>
+  <div class="video-grid">
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/Ag77WVpl--M" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/pfuVeaMLoN0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/RkclAe7fBJc" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/QZ3QV8uwDO8" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/RsGAuZgloks" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/iBA0V5CCw-8" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+
+
+<!-- ---------------- PARTICLE SCRIPT ---------------- -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.onresize = resize;
+
+const DOTS = 80;
+const SPEED = 0.4;
+const LINK_DISTANCE = 130;
+
+const particles = [];
+
+for (let i = 0; i < DOTS; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    dx: (Math.random() - 0.5) * SPEED,
+    dy: (Math.random() - 0.5) * SPEED,
+    r: Math.random() * 2 + 1
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(0, 200, 255, 0.9)";
+    ctx.shadowColor = "rgba(0, 200, 255, 1)";
+    ctx.shadowBlur = 10;
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      let a = particles[i];
+      let b = particles[j];
+      let dist = Math.hypot(a.x - b.x, a.y - b.y);
+
+      if (dist < LINK_DISTANCE) {
+        ctx.strokeStyle = "rgba(0, 200, 255," + (1 - dist / LINK_DISTANCE) + ")";
+        ctx.shadowColor = "rgba(0, 200, 255, 1)";
+        ctx.shadowBlur = 12;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
