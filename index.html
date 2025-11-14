@@ -85,9 +85,11 @@ function resize() {
 resize();
 window.onresize = resize;
 
-const DOTS = 80;
-const SPEED = 0.4;
-const LINK_DISTANCE = 130;
+// ------------------ MOBILE OPTIMIZATION ------------------
+const isMobile = window.innerWidth < 720; // detect mobile
+const DOTS = isMobile ? 30 : 80;
+const SPEED = isMobile ? 0.2 : 0.4;
+const LINK_DISTANCE = isMobile ? 80 : 130;
 
 const particles = [];
 
@@ -109,7 +111,7 @@ function animate() {
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fillStyle = "rgba(0, 200, 255, 0.9)";
     ctx.shadowColor = "rgba(0, 200, 255, 1)";
-    ctx.shadowBlur = 10;
+    ctx.shadowBlur = isMobile ? 3 : 10; // smaller blur on mobile
     ctx.fill();
 
     p.x += p.dx;
@@ -128,7 +130,7 @@ function animate() {
       if (dist < LINK_DISTANCE) {
         ctx.strokeStyle = "rgba(0, 200, 255," + (1 - dist / LINK_DISTANCE) + ")";
         ctx.shadowColor = "rgba(0, 200, 255, 1)";
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = isMobile ? 2 : 12;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -142,6 +144,7 @@ function animate() {
 }
 animate();
 </script>
+
 
 </body>
 </html>
