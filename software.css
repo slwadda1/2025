@@ -1,0 +1,108 @@
+/* Search Bar */
+.search-container {
+  width: 350px;
+  margin: 20px auto;
+  position: relative;
+  text-align: center;
+}
+.search-container input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 17px;
+}
+.search-container input::placeholder {
+  color: #ccc;
+}
+
+/* Software List */
+.software-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Individual Software Card */
+.software-card {
+  width: 350px;                 /* card width පොඩි කරන්න */
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(15,23,42,0.6);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* contents මැදට align වෙනවා */
+  gap: 8px;
+  overflow: hidden;             /* image card boundaries clip වෙනවා */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.software-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* Software Image */
+.software-card img {
+  width: 200px;                 /* image width පොඩි කරන්න */
+  height: 150px;                /* image height පොඩි කරන්න */
+  object-fit: contain;          /* image distortion නැතුව scale වෙනවා */
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;               /* image මැදට align වෙනවා */
+  float: left;
+}
+
+/* Name, Description and Download Button Wrapper */
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* name + desc + button මැදට */
+  gap: 8px;                     /* vertical spacing */
+  opacity: 0;                   /* hidden initially */
+  transform: translateY(20px);  /* hover effect */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.software-card:hover .game-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Software Name */
+.game-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;           /* name මැදට */
+}
+
+/* Description */
+.game-desc {
+  font-size: 13px;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Download Button */
+.download-btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent, #06b6d4);
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;            /* button ටිකක් පහලට */
+  transition: 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+}
