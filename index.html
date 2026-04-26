@@ -73,7 +73,6 @@
 
 
 
-<!-- ---------------- PARTICLE SCRIPT ---------------- -->
 <script>
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -85,11 +84,11 @@ function resize() {
 resize();
 window.onresize = resize;
 
-// ------------------ MOBILE OPTIMIZATION ------------------
-const isMobile = window.innerWidth < 720; // detect mobile
-const DOTS = isMobile ? 30 : 80;
-const SPEED = isMobile ? 0.2 : 0.4;
-const LINK_DISTANCE = isMobile ? 80 : 130;
+// ----------- OPTIMIZED SETTINGS -----------
+const isMobile = window.innerWidth < 720;
+const DOTS = isMobile ? 12 : 40;      // reduce dots
+const SPEED = isMobile ? 0.12 : 0.28;
+const LINK_DISTANCE = isMobile ? 60 : 110;
 
 const particles = [];
 
@@ -99,7 +98,7 @@ for (let i = 0; i < DOTS; i++) {
     y: Math.random() * canvas.height,
     dx: (Math.random() - 0.5) * SPEED,
     dy: (Math.random() - 0.5) * SPEED,
-    r: Math.random() * 2 + 1
+    r: Math.random() * 1.2 + 0.6   // smaller dots
   });
 }
 
@@ -109,9 +108,10 @@ function animate() {
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(0, 200, 255, 0.9)";
-    ctx.shadowColor = "rgba(0, 200, 255, 1)";
-    ctx.shadowBlur = isMobile ? 3 : 10; // smaller blur on mobile
+
+    // DARK ASH COLOR (no blue)
+    ctx.fillStyle = "rgba(60,60,60,0.9)";
+    ctx.shadowBlur = 0;
     ctx.fill();
 
     p.x += p.dx;
@@ -128,9 +128,7 @@ function animate() {
       let dist = Math.hypot(a.x - b.x, a.y - b.y);
 
       if (dist < LINK_DISTANCE) {
-        ctx.strokeStyle = "rgba(0, 200, 255," + (1 - dist / LINK_DISTANCE) + ")";
-        ctx.shadowColor = "rgba(0, 200, 255, 1)";
-        ctx.shadowBlur = isMobile ? 2 : 12;
+        ctx.strokeStyle = "rgba(80,80,80," + (1 - dist / LINK_DISTANCE) + ")";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
