@@ -1,0 +1,430 @@
+:root{
+  --accent: #06b6d4;
+  --text: #ffffff;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+a{color:inherit;text-decoration:none}
+
+body{
+  min-height:100vh;
+  background: radial-gradient(circle at top left, #071024, #020617 70%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:var(--text);
+  padding:40px 20px;
+}
+
+/* PARTICLES CANVAS */
+#particles{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glass header */
+.site-header{
+  width:90%;
+  max-width:1100px;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: rgba(15, 23, 42, 0.55);
+  border-radius:24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding:14px 30px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  position:relative;
+  margin-bottom:40px;
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* Logo */
+.logo{
+  width:66px;
+  height:66px;
+  border-radius:50%;
+  overflow:hidden;
+  background: radial-gradient(circle at 30% 30%, var(--accent), #7c3aed);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 0 20px rgba(6,182,212,0.6);
+  transition:transform .2s ease;
+}
+
+.logo:hover{
+  transform:scale(1.06);
+  box-shadow: 0 0 28px rgba(6,182,212,0.9);
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.site-name{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+
+.site-name .title{
+  font-size:20px;
+  font-weight:700;
+}
+
+.site-name .tag{
+  font-size:13px;
+  opacity:0.75;
+  margin-top:4px;
+}
+
+/* Navigation */
+nav[aria-label="main"]{
+  display:flex;
+  align-items:center;
+}
+
+.nav-list{
+  display:flex;
+  gap:18px;
+  list-style:none;
+  align-items:center;
+}
+
+.nav-list a{
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:13px;
+  padding:6px 8px;
+  border-radius:8px;
+  transition:all .15s ease;
+  color:var(--text);
+}
+
+.nav-list a:hover{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(3px);
+  transform:translateY(-2px);
+}
+
+@media(max-width:720px){
+  .site-header{
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .hero-inner{
+    backdrop-filter: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .logo{
+    box-shadow: 0 0 10px rgba(6,182,212,0.5);
+  }
+}
+
+/* ---------- Large top hero area ---------- */
+.hero-top{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.hero-inner{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: rgba(15, 23, 42, 0.45);
+  padding: 20px 40px;
+  border-radius: 24px;
+  backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+/* Large Logo */
+.hero-logo{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(6,182,212,0.8);
+  transition: transform .25s ease;
+}
+
+.hero-logo:hover{
+  transform: scale(1.05);
+}
+
+/* Subscribe Button */
+.sub-btn{
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(45deg, #ff0033, #ff5e5e);
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(255,0,60,0.55);
+  transition: 0.25s ease;
+}
+
+.sub-btn:hover{
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 6px 22px rgba(255,0,60,0.85);
+}
+
+/* Mobile view */
+@media(max-width: 720px){
+  .hero-inner{
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px;
+  }
+
+  .hero-logo{
+    width: 100px;
+    height: 100px;
+  }
+
+  .sub-btn{
+    font-size: 16px;
+    padding: 12px 26px;
+  }
+}
+/* ================== My Video Section ================== */
+.video-section {
+  width: 100%;
+  max-width: 1500px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.video-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.video-item {
+  width: 480px;   /* 3 columns desktop */
+  height: 270px;  /* 16:9 ratio */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Tablet */
+@media(max-width: 1000px){
+  .video-item {
+    width: 45%;   /* 2 per row tablet */
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Mobile */
+@media(max-width: 600px){
+  .video-item {
+    width: 90%;   /* 1 per row mobile */
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+.video-section h2 {
+  font-size: 34px;
+  font-weight: 900; /* bold */
+  margin-bottom: 30px;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(6,182,212,0.8), 0 0 15px rgba(6,182,212,0.5); /* glow effect */
+  transition: 0.3s ease;
+}
+
+/* Hover animation (optional) */
+.video-section h2:hover {
+  text-shadow: 0 0 12px rgba(6,182,212,1), 0 0 25px rgba(6,182,212,0.7);
+  transform: scale(1.05);
+}
+.games-heading {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 20px; /* <-- මේක මෙනූ එකට වඩා පහලින් හරිපරිදි align වෙයි */
+    letter-spacing: 2px;
+    animation: neonPulse 2.5s infinite ease-in-out;
+}
+
+
+/* Neon Glow Animation */
+@keyframes neonPulse {
+    0% {
+        text-shadow: 
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 30px #00c8ff;
+        color: #ffffff;
+    }
+    50% {
+        text-shadow: 
+            0 0 15px #0099ff,
+            0 0 30px #0088ff,
+            0 0 45px #00ddff;
+        color: #dff9ff;
+    }
+    100% {
+        text-shadow: 
+            0 0 10px #00ffff,
+            0 0 20px #00ffff,
+            0 0 30px #00c8ff;
+        color: #ffffff;
+    }
+}
+/* Text selection disable */
+body, p, h1, h2, h3, h4, h5, h6, span, a, div {
+    user-select: none;      /* Standard */
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+}
+img {
+    pointer-events: none;  /* disable click / drag on images */
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+/* Disable text selection */
+body, p, h1, h2, h3, h4, h5, h6, span, a, div {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Disable image drag / right-click */
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+.games-gallery {
+    display: flex;             
+    flex-direction: row;       
+    justify-content: flex-start;  /* left aligned */
+    align-items: flex-start;      
+    gap: 30px;                 
+    margin: 40px 0 40px 20px;    
+    flex-wrap: wrap;           
+}
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* image + name center aligned */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-card img {
+    width: 377px;   /* 3.93 in */
+    height: 461px;  /* 4.8 in */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+}
+
+.game-name {
+    font-size: 18px;  /* slightly bigger */
+    font-weight: 700;  /* bold */
+    text-align: center; /* center below image */
+    color: #ffffff;
+}
+/* ================== Ash Dark Search Bar ================== */
+
+.search-container {
+  width: 55%;
+  max-width: 720px;
+  margin: 30px auto 65px auto;
+  position: relative;
+}
+
+#gameSearch {
+  width: 100%;
+  padding: 15px 55px 15px 22px;
+  border-radius: 40px;
+  border: 1px solid #3a3a3a;
+  background: #2b2b2b;      /* ash color */
+  color: #ffffff;
+  font-size: 17px;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+#gameSearch::placeholder {
+  color: #b5b5b5;
+}
+
+#gameSearch:focus {
+  border: 1px solid #ffffff;
+  background: #333333;
+}
+
+.search-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #b5b5b5;
+  pointer-events: none;
+}
+
+@media(max-width:720px){
+  .search-container{ width:90%; }
+}
+
+
+
+

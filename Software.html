@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SL WADDA WEB - Software</title>
+<link rel="icon" href="SLWADDA.png" type="image/png">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="software.css">
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo"><img src="SLWADDA.png" alt="Logo"></div>
+      <div class="site-name">
+        <div class="title">SL WADDA WEB</div>
+        <div class="tag">YT</div>
+      </div>
+    </div>
+    <nav aria-label="main">
+      <ul class="nav-list">
+        <li><a href="Games.html">Games</a></li>
+        <li><a href="Software.html">Software</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="https://www.youtube.com/@SLWADDAYT">YT</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="games-heading">Software Section</h1>
+
+  <div class="search-container">
+    <input type="text" id="softSearch" placeholder="Search Software...">
+  </div>
+
+  <div class="software-list">
+
+    <div class="software-card">
+      <img src="a68a3820341fa3acba9b9fb6028b3fba8de998cf72d95b992813ff5a1cd316b2_100.webp" alt="Chrome">
+      <div class="game-name">Google Chrome</div>
+      <div class="game-info">
+        <div class="game-desc">Fast web browser</div>
+        <a href="https://dl.google.com/..." class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="software-card">
+      <img src="Windows-10-Pro-removebg-preview.png" alt="Windows 10 Pro">
+      <div class="game-name">Windows 10 Pro</div>
+      <div class="game-info">
+        <div class="game-desc">Operating system</div>
+        <a href="https://go.microsoft.com..." class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="software-card">
+      <img src="Opera-Logo-PNG-Images-HD.png" alt="Opera">
+      <div class="game-name">Opera</div>
+      <div class="game-info">
+        <div class="game-desc">Lightweight browser</div>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="software-card">
+      <img src="5b43bc40e99939b4572e32b7.png" alt="VLC">
+      <div class="game-name">VLC Media Player</div>
+      <div class="game-info">
+        <div class="game-desc">Media Player</div>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+        
+    <div class="software-card">
+      <img src="5b43bc40e99939b4572e32b7.png" alt="VLC">
+      <div class="game-name">VLC Media Player</div>
+      <div class="game-info">
+        <div class="game-desc">Media Player</div>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Search Script -->
+<script>
+const softSearch = document.getElementById("softSearch");
+const softwareCards = document.querySelectorAll(".software-card");
+
+softSearch.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+  softwareCards.forEach(card => {
+    const name = card.querySelector(".game-name").innerText.toLowerCase();
+    const desc = card.querySelector(".game-desc").innerText.toLowerCase();
+    card.style.display = (name.includes(value) || desc.includes(value)) ? "flex" : "none";
+  });
+});
+</script>
+
+<!-- Particles + Inspect Disable -->
+<script>
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();onresize=resize;
+const DOTS=80,SPEED=0.4,LINK_DISTANCE=130,particles=[];
+for(let i=0;i<DOTS;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,dx:(Math.random()-.5)*SPEED,dy:(Math.random()-.5)*SPEED,r:Math.random()*2+1});
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle="rgba(0,200,255,0.9)";ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>canvas.width)p.dx*=-1;if(p.y<0||p.y>canvas.height)p.dy*=-1;});
+for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){let a=particles[i],b=particles[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<LINK_DISTANCE){ctx.strokeStyle="rgba(0,200,255,"+(1-d/LINK_DISTANCE)+")";ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+requestAnimationFrame(animate);}
+animate();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&['c','s','u','i'].includes(e.key.toLowerCase())){e.preventDefault();alert("Disabled!");}});
+</script>
+
+</body>
+</html>
