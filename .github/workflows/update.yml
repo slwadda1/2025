@@ -1,0 +1,32 @@
+name: Update Games
+
+on:
+  schedule:
+    - cron: '0 * * * *' # මෙය සෑම පැයකටම වරක් ක්‍රියාත්මක වේ
+  workflow_dispatch: # ඔබට අවශ්‍ය විටෙක අතින් (manually) ද මෙය ක්‍රියාත්මක කළ හැක
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Run update script
+        run: python update_games.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add games.json
+          git commit -m "Auto update games list"
+          git push
