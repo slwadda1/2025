@@ -10,6 +10,9 @@
 
 <body>
 
+  
+<script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/11/05/11/20261105115503-2SQ5N18P.js" defer></script>
   <!-- Particles Canvas -->
   <canvas id="particles"></canvas>
 
@@ -294,16 +297,18 @@
 <div id="games-container" style="display: grid; gap: 20px;"></div>
 
 <script>
-  // games.json එකේ තියෙන ඒවා මෙතනින් load වෙනවා
+  // ඔයාගේ ගේම් විස්තර තියෙන json ෆයිල් එක
   fetch('games.json')
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('games-container');
+      
+      // දත්ත ටික එකින් එක පෙන්වනවා
       data.forEach(game => {
         container.innerHTML += `
-          <div class="game-card">
+          <div style="border:1px solid #ccc; padding:10px; margin:10px;">
             <h3>${game.title}</h3>
-            <a href="${game.link}" target="_blank">Download Link</a>
+            <a href="${game.link}">Download පේජ් එකට යන්න</a>
           </div>
         `;
       });
@@ -430,6 +435,7 @@ const LINK_DISTANCE = isMobile ? 55 : 110;
       }
     });
   </script>
+  <div id="games-container"></div>
 
 </body>
 </html>
